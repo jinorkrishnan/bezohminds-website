@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bezohminds — Engineering Speaks for Itself</title>
+<meta name="description" content="Bezohminds Private Limited. Custom software, AI engineering, enterprise e-commerce, Shopify, Salesforce, and mobile applications. Tirunelveli, India → United States." />
+
+<!-- Structured data for MX (Machine Experience) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bezohminds Private Limited",
+  "url": "https://bezohminds.com",
+  "logo": "https://bezohminds.com/logo.svg",
+  "description": "Enterprise-grade software architecture, AI engineering, and high-value execution. We engineer custom software, RAG systems, e-commerce, Salesforce, and mobile applications.",
+  "knowsAbout": [
+    "Custom Software Engineering",
+    "Python", ".NET", "Node.js", "React", "Angular",
+    "Retrieval-Augmented Generation (RAG)",
+    "Large Language Model Orchestration",
+    "Vector Databases",
+    "Shopify Engineering",
+    "Salesforce Implementation",
+    "Mobile Application Development",
+    "Cloud Architecture (GCP, AWS)"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tirunelveli",
+    "addressRegion": "Tamil Nadu",
+    "addressCountry": "IN"
+  },
+  "sameAs": ["https://www.linkedin.com/company/bezohminds"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --canvas:#FAFAF7;
+    --surface:#FFFFFF;
+    --ink:#0A0A0A;
+    --graphite:#3A3A3A;
+    --muted:#8A8A85;
+    --hairline:#1A1A1A;
+    --hairline-soft:#E5E5E0;
+    --accent:#00A8A8;        /* Bezohminds Teal — from logo */
+    --navy:#0A2540;
+    --font-display:'Space Grotesk', system-ui, sans-serif;
+    --font-body:'Inter', system-ui, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+    --max:1280px;
+    --pad:clamp(20px, 4vw, 56px);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,250,247,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--hairline-soft);
+  }
+  .nav-inner{
+    max-width:var(--max);margin:0 auto;
+    padding:18px var(--pad);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-mono);font-size:13px;
+    letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+  }
+  .brand-mark{
+    width:22px;height:22px;
+    background:var(--ink);
+    position:relative;
+  }
+  .brand-mark::after{
+    content:"";position:absolute;inset:4px;
+    background:var(--accent);
+  }
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
+  .nav-links a{position:relative;padding:6px 0}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--accent);transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    font-family:var(--font-mono);font-size:12px;
+    padding:9px 16px;border:1px solid var(--ink);
+    text-transform:uppercase;letter-spacing:.1em;
+    transition:background .2s,color .2s;
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--canvas)}
+  @media (max-width:768px){.nav-links{display:none}}
+
+  /* ============ HERO ============ */
+  .hero{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(80px,12vw,160px) var(--pad) clamp(60px,8vw,100px);
+  }
+  .hero-eyebrow{
+    font-family:var(--font-mono);font-size:12px;
+    color:var(--muted);text-transform:uppercase;letter-spacing:.15em;
+    margin-bottom:32px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .hero-eyebrow::before{
+    content:"";display:inline-block;width:8px;height:8px;
+    background:var(--accent);
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(40px, 8.5vw, 112px);
+    line-height:.95;letter-spacing:-.03em;font-weight:600;
+    margin:0 0 48px;
+  }
+  .hero h1 span{display:block}
+  .hero h1 .accent{color:var(--accent)}
+  .hero-meta{
+    border-left:1px solid var(--ink);
+    padding:6px 0 6px 22px;
+    font-family:var(--font-mono);font-size:14px;
+    color:var(--graphite);line-height:2;
+    max-width:560px;
+  }
+  .hero-meta .arrow{color:var(--accent)}
+
+  /* ============ SECTION ============ */
+  .section{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(60px,8vw,120px) var(--pad);
+    border-top:1px solid var(--hairline-soft);
+  }
+  .section-label{
+    font-family:var(--font-mono);font-size:12px;
+    color:var(--muted);text-transform:uppercase;letter-spacing:.15em;
+    margin-bottom:24px;
+  }
+  .section-title{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(28px, 4vw, 48px);
+    letter-spacing:-.02em;line-height:1.05;
+    margin:0 0 56px;max-width:780px;
+  }
+
+  /* ============ ETHOS (Terminal block) ============ */
+  .ethos{
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    padding:clamp(28px,4vw,56px);
+    font-family:var(--font-mono);font-size:14px;line-height:1.85;
+    max-width:880px;
+  }
+  .ethos-head{
+    color:var(--accent);font-weight:500;
+    margin-bottom:18px;font-size:12px;letter-spacing:.1em;
+  }
+  .ethos p{margin:0 0 16px;color:var(--graphite)}
+  .ethos p:last-child{margin:0}
+  .ethos strong{color:var(--ink)}
+
+  /* ============ BENTO GRID ============ */
+  .bento-wrap{margin-top:8px}
+  .bento-controls{
+    display:flex;justify-content:space-between;align-items:center;
+    gap:24px;margin-bottom:28px;flex-wrap:wrap;
+  }
+  .view-mode{
+    display:flex;align-items:center;gap:0;
+    border:1px solid var(--hairline);background:var(--surface);
+    font-family:var(--font-mono);font-size:13px;
+  }
+  .view-mode .label{
+    padding:0 16px;color:var(--muted);
+    font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+    border-right:1px solid var(--hairline-soft);
+  }
+  .view-mode button{
+    background:none;border:none;cursor:pointer;
+    padding:12px 18px;font-family:var(--font-mono);font-size:13px;
+    color:var(--ink);transition:background .2s;
+  }
+  .view-mode button:hover{background:var(--canvas)}
+  .view-mode .perspective{
+    min-width:200px;text-align:center;font-weight:500;
+    border-left:1px solid var(--hairline-soft);
+    border-right:1px solid var(--hairline-soft);
+    padding:12px 22px;
+  }
+  .filter-wrap{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--font-mono);font-size:12px;
+    color:var(--muted);text-transform:uppercase;letter-spacing:.1em;
+  }
+  .filter-wrap select{
+    background:var(--surface);border:1px solid var(--hairline);
+    padding:10px 32px 10px 14px;font-family:var(--font-mono);font-size:13px;
+    color:var(--ink);cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%230A0A0A' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat:no-repeat;background-position:right 12px center;
+    min-width:220px;
+  }
+
+  .bento{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:minmax(180px,auto);
+    gap:0;
+    border:1px solid var(--hairline);
+    background:var(--hairline);
+  }
+  .cell{
+    background:var(--surface);
+    padding:24px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:opacity .3s, background .3s;
+    position:relative;
+    min-height:180px;
+  }
+  .cell.dim{opacity:.28}
+  .cell.active{background:var(--ink);color:var(--canvas)}
+  .cell.active .cell-tag,
+  .cell.active .cell-foot{color:var(--accent)}
+  .cell.active .cell-body{color:var(--canvas)}
+
+  .cell-tag{
+    font-family:var(--font-mono);font-size:11px;
+    color:var(--graphite);text-transform:uppercase;letter-spacing:.15em;
+    font-weight:500;
+  }
+  .cell-body{
+    font-family:var(--font-display);font-weight:500;
+    font-size:22px;line-height:1.15;letter-spacing:-.01em;
+    color:var(--ink);margin-top:auto;
+  }
+  .cell-body.mono{
+    font-family:var(--font-mono);font-size:15px;font-weight:400;
+    letter-spacing:0;line-height:1.5;
+  }
+  .cell-foot{
+    font-family:var(--font-mono);font-size:10px;
+    color:var(--muted);letter-spacing:.1em;
+    margin-top:14px;
+  }
+  /* The hero cell (Visit Maker spans 2 rows) */
+  .cell.span-row{grid-row:span 2}
+  .cell.span-col{grid-column:span 2}
+  /* Empty cell */
+  .cell.empty{background:transparent;pointer-events:none}
+
+  /* ============ CTA CELL (fills bottom-right) ============ */
+  .cell.cta-cell{
+    background:var(--ink);
+    color:var(--canvas);
+    text-decoration:none;
+    cursor:pointer;
+    transition:background .25s ease;
+  }
+  .cell.cta-cell:hover{ background:var(--accent); }
+  .cell.cta-cell .cell-tag{ color:var(--accent); transition:color .25s ease; }
+  .cell.cta-cell:hover .cell-tag{ color:var(--ink); }
+  .cell.cta-cell .cell-body{
+    color:var(--canvas);
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .cell.cta-cell .cell-arrow{
+    font-family:var(--font-mono);
+    font-size:32px;
+    line-height:1;
+    margin-top:18px;
+    color:var(--accent);
+    transition:color .25s ease, transform .25s ease;
+    display:inline-block;
+  }
+  .cell.cta-cell:hover .cell-arrow{
+    color:var(--ink);
+    transform:translateX(6px);
+  }
+  .cell.cta-cell .cell-foot{ color:#8A8A85; }
+
+  @media (max-width:900px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .cell.span-col{grid-column:span 1}
+  }
+  @media (max-width:540px){
+    .bento{grid-template-columns:1fr}
+    .cell.span-row{grid-row:auto}
+  }
+
+  /* ============ PRODUCT BLOCK (Visit Maker) ============ */
+  .product{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--hairline);
+  }
+  .product>div{padding:clamp(28px,4vw,56px)}
+  .product-left{background:var(--ink);color:var(--canvas)}
+  .product-left .tag{
+    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;
+  }
+  .product-left h3{
+    font-family:var(--font-display);font-size:clamp(28px,4vw,44px);
+    line-height:1;margin:0 0 14px;letter-spacing:-.02em;font-weight:600;
+  }
+  .product-left .sub{
+    font-family:var(--font-mono);font-size:13px;color:#A8A8A0;
+  }
+  .product-right{background:var(--surface)}
+  .product-right h4{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 10px;
+  }
+  .product-right p{margin:0 0 28px;font-size:15px;color:var(--graphite)}
+  .product-right p:last-of-type{margin-bottom:0}
+  .product-right .quote{
+    border-left:2px solid var(--accent);padding-left:18px;
+    font-family:var(--font-display);font-size:20px;line-height:1.3;
+    color:var(--ink);font-style:italic;font-weight:500;
+  }
+  .product-right .cite{
+    font-family:var(--font-mono);font-size:12px;color:var(--muted);
+    margin-top:8px;display:block;font-style:normal;
+  }
+  @media (max-width:768px){.product{grid-template-columns:1fr}}
+
+  /* ============ OPERATIONS (numbered list) ============ */
+  .ops{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--hairline)}
+  .op{
+    padding:clamp(28px,3.5vw,40px);
+    border-right:1px solid var(--hairline-soft);
+    background:var(--surface);
+  }
+  .op:last-child{border-right:none}
+  .op-num{
+    font-family:var(--font-mono);font-size:12px;color:var(--accent);
+    letter-spacing:.15em;margin-bottom:18px;
+  }
+  .op h4{
+    font-family:var(--font-display);font-size:22px;
+    font-weight:600;letter-spacing:-.01em;margin:0 0 12px;
+  }
+  .op p{margin:0;font-size:14px;color:var(--graphite);line-height:1.6}
+  @media (max-width:768px){
+    .ops{grid-template-columns:1fr}
+    .op{border-right:none;border-bottom:1px solid var(--hairline-soft)}
+    .op:last-child{border-bottom:none}
+  }
+
+  /* ============ CTA + FOOTER ============ */
+  .cta{
+    max-width:var(--max);margin:0 auto;
+    padding:clamp(80px,10vw,140px) var(--pad);
+    text-align:center;
+    border-top:1px solid var(--hairline-soft);
+  }
+  .cta h2{
+    font-family:var(--font-display);
+    font-size:clamp(36px,7vw,88px);
+    letter-spacing:-.03em;line-height:.95;font-weight:600;
+    margin:0 0 36px;
+  }
+  .cta h2 .accent{color:var(--accent)}
+  .cta-btn{
+    display:inline-block;padding:18px 42px;
+    background:var(--ink);color:var(--canvas);
+    font-family:var(--font-mono);font-size:13px;
+    text-transform:uppercase;letter-spacing:.15em;
+    border:1px solid var(--ink);
+    transition:background .2s,color .2s;
+  }
+  .cta-btn:hover{background:var(--accent);border-color:var(--accent)}
+
+  footer{
+    background:var(--navy);color:#A8B5C8;
+    padding:clamp(40px,5vw,64px) var(--pad);
+    font-family:var(--font-mono);font-size:13px;
+  }
+  .foot-inner{
+    max-width:var(--max);margin:0 auto;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  }
+  .foot-inner strong{color:#fff}
+  .foot-meta{display:flex;gap:28px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark"></span>
+      <span>BEZOHMINDS</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#ai-vision">AI Strategy</a>
+      <a href="#product">Visit Maker</a>
+      <a href="#operations">Operations</a>
+    </div>
+    <a href="#contact" class="nav-cta">Start a Project</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-eyebrow">Bezohminds Private Limited · Engineering Co.</div>
+  <h1>
+    <span>WE ENGINEER</span>
+    <span>CUSTOM <span class="accent">SOFTWARE.</span></span>
+    <span>WE BUILD ENTERPRISE</span>
+    <span>E-COMMERCE.</span>
+    <span>WE ARCHITECT</span>
+    <span>DIGITAL <span class="accent">GROWTH.</span></span>
+  </h1>
+  <div class="hero-meta">
+    Bezohminds Private Limited.<br/>
+    Tirunelveli, India <span class="arrow">→</span> United States.<br/>
+    Enterprise-grade architecture. High-value execution. Zero fluff.
+  </div>
+</section>
+
+<!-- ============ ETHOS ============ -->
+<section class="section" id="ethos">
+  <div class="section-label">02 / Origin</div>
+  <h2 class="section-title">Design and construction, by mandate.</h2>
+  <div class="ethos">
+    <div class="ethos-head">// THE ORIGIN PATTERN — EXODUS 31:1-6</div>
+    <p>The name <strong>Bezohminds</strong> originates from <strong>Bezalel</strong> and <strong>Oholiab</strong> — the architects chosen to bring together profound artistic design and unyielding construction skills.</p>
+    <p>We approach software architecture with the exact same mandate. We do not just write code; we combine the rigor of science, the precision of design, and the necessity of commercial value.</p>
+  </div>
+</section>
+
+<!-- ============ SERVICES BENTO ============ -->
+<section class="section" id="services">
+  <div class="section-label">03 / Capabilities</div>
+  <h2 class="section-title">Services mapped to scope and stack — engineered to be read by humans and machines.</h2>
+
+  <div class="bento-wrap">
+    <div class="bento-controls">
+      <div class="view-mode">
+        <span class="label">View Mode</span>
+        <button id="prev-view" aria-label="Previous">‹</button>
+        <span class="perspective" id="perspective">Client Perspective</span>
+        <button id="next-view" aria-label="Next">›</button>
+      </div>
+      <div class="filter-wrap">
+        <span>Filter</span>
+        <select id="filter">
+          <option value="all">All</option>
+          <option value="enterprise">Enterprise Software</option>
+          <option value="shopify">Shopify Development</option>
+          <option value="salesforce">Salesforce Implementation</option>
+          <option value="mobile">Mobile Apps</option>
+          <option value="ai">AI Engineering</option>
+          <option value="marketing">Digital Marketing</option>
+          <option value="visit-maker">Visit Maker</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="bento" id="bento">
+      <!-- Visit Maker — spans 2 rows, top-left -->
+      <div class="cell span-row" data-key="visit-maker" itemscope itemtype="https://schema.org/Product">
+        <div class="cell-tag" itemprop="name">VISIT MAKER</div>
+        <div class="cell-body" data-client="Scheduling Ecosystem" data-eng="React / Node.js / MongoDB">Scheduling Ecosystem</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="cell" data-key="enterprise" itemscope itemtype="https://schema.org/Service">
+        <div class="cell-tag" itemprop="serviceType">ENTERPRISE</div>
+        <div class="cell-body"
+             data-client="Custom Software"
+             data-eng="Python / .NET / Node.js / React / Angular">Custom Software</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- Shopify -->
+      <div class="cell" data-key="shopify" itemscope itemtype="https://schema.org/Service">
+        <div class="cell-tag" itemprop="serviceType">SHOPIFY</div>
+        <div class="cell-body" data-client="Storefront Dev" data-eng="Liquid / Node.js / Hydrogen">Storefront Dev</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- Salesforce -->
+      <div class="cell" data-key="salesforce" itemscope itemtype="https://schema.org/Service">
+        <div class="cell-tag" itemprop="serviceType">SALESFORCE</div>
+        <div class="cell-body" data-client="CRM Implementation" data-eng="Apex / LWC / Flow">CRM Implementation</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="cell" data-key="mobile" itemscope itemtype="https://schema.org/Service">
+        <div class="cell-tag" itemprop="serviceType">MOBILE</div>
+        <div class="cell-body" data-client="iOS & Android" data-eng="Flutter / Swift / Kotlin">iOS & Android</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- AI Engineering -->
+      <div class="cell" data-key="ai" itemscope itemtype="https://schema.org/Service">
+        <div class="cell-tag" itemprop="serviceType">AI ENGINEERING</div>
+        <div class="cell-body"
+             data-client="RAG & Intelligent Systems"
+             data-eng="RAG / Vector DBs / LLM Orchestration">RAG & Intelligent Systems</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- Marketing -->
+      <div class="cell" data-key="marketing" itemscope itemtype="https://schema.org/Service">
+        <div class="cell-tag" itemprop="serviceType">MARKETING</div>
+        <div class="cell-body" data-client="Digital Strategy" data-eng="GA4 / Meta API / SEO">Digital Strategy</div>
+        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+      </div>
+
+      <!-- CTA — fills the bottom-right slot -->
+      <a class="cell cta-cell" href="#contact" data-key="cta" aria-label="Start a project with Bezohminds">
+        <div class="cell-tag">START A PROJECT</div>
+        <div class="cell-body">Let's engineer<br/>something rigorous.</div>
+        <div class="cell-arrow">→</div>
+        <div class="cell-foot">[ CONTACT ]</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI STRATEGY / VISION ============ -->
+<section class="section" id="ai-vision">
+  <div class="section-label">04 / AI Strategy</div>
+  <h2 class="section-title">We don't bolt AI on. We engineer it in.</h2>
+
+  <div class="ethos" style="max-width:none;margin-bottom:48px;">
+    <div class="ethos-head">// THE BEZOHMINDS AI MANDATE</div>
+    <p>The AI era is not a feature release. It is a re-architecture of how enterprise software is built, indexed, and consumed — by humans <strong>and</strong> by machines.</p>
+    <p>We are actively engineering <strong>Retrieval-Augmented Generation (RAG) systems</strong> as the new enterprise knowledge layer. Documents, codebases, customer records, and operational data become a single, queryable substrate. The result: applications that <em>reason</em> over your business, not just store it.</p>
+  </div>
+
+  <div class="ops">
+    <div class="op">
+      <div class="op-num">01 / FOUNDATION</div>
+      <h4>RAG as the Knowledge Layer</h4>
+      <p>Hybrid retrieval pipelines combining vector search, structured data, and OCR/vision parsing. Built for accuracy, traceability, and citation — not hallucination.</p>
+    </div>
+    <div class="op">
+      <div class="op-num">02 / ORCHESTRATION</div>
+      <h4>Agentic Workflows</h4>
+      <p>LLMs orchestrated through deterministic workflow engines. Models propose; pipelines verify. Every decision is observable, auditable, and reversible.</p>
+    </div>
+    <div class="op">
+      <div class="op-num">03 / SOVEREIGNTY</div>
+      <h4>Open-Source First</h4>
+      <p>We design for portability across providers and on-prem deployments. Your data, your models, your infrastructure — no vendor lock-in, no surprise pricing.</p>
+    </div>
+  </div>
+
+  <div class="ops" style="border-top:none;margin-top:-1px;">
+    <div class="op">
+      <div class="op-num">04 / INTEGRATION</div>
+      <h4>AI-Native Architecture</h4>
+      <p>New systems are designed RAG-ready from day one. Legacy systems get a retrieval layer wrapped around them — without rewrites.</p>
+    </div>
+    <div class="op">
+      <div class="op-num">05 / HUMAN-IN-THE-LOOP</div>
+      <h4>Augment, Not Replace</h4>
+      <p>Our AI systems amplify expert judgment. Every critical decision surfaces evidence and confidence — the human stays in command.</p>
+    </div>
+    <div class="op">
+      <div class="op-num">06 / PRACTICE</div>
+      <h4>Internal AI Adoption</h4>
+      <p>We ship what we use. Our own engineering, design, and delivery workflows are AI-augmented — proven internally before we deploy it for clients.</p>
+    </div>
+  </div>
+
+  <div class="ethos" style="max-width:none;margin-top:48px;background:var(--ink);color:var(--canvas);border-color:var(--ink);">
+    <div class="ethos-head" style="color:var(--accent);">// THE VISION</div>
+    <p style="color:#D8D8D2;">By 2027, every Bezohminds engagement will ship with an AI-native architecture by default — not as an add-on, but as the substrate. Custom software that learns from its own operational data. E-commerce that anticipates demand. Salesforce orgs that automate their own triage.</p>
+    <p style="color:#D8D8D2;"><strong style="color:#fff;">The mandate is unchanged.</strong> Bezalel built the tabernacle with the rigor of an engineer and the soul of an artist. We build AI systems the same way — engineered to be trusted, designed to be used.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUCT SHOWCASE ============ -->
+<section class="section" id="product">
+  <div class="section-label">05 / Proprietary Product</div>
+  <h2 class="section-title">Visit Maker — instant revenue capture for service providers.</h2>
+  <div class="product">
+    <div class="product-left">
+      <div class="tag">// PROPRIETARY PRODUCT</div>
+      <h3>VISIT MAKER</h3>
+      <div class="sub">Cloud-Based Scheduling Infrastructure for Service Providers.</div>
+    </div>
+    <div class="product-right">
+      <h4>The Problem</h4>
+      <p>Consumer service providers lose revenue to friction in booking.</p>
+
+      <h4>The Solution</h4>
+      <p>Visit Maker. An accessible, highly responsive scheduling environment. Customers select time blocks; providers manage availability via real-time SMS and email gateways.</p>
+
+      <h4>The Result</h4>
+      <p class="quote">"4 new customers in the first 3 days. Setup was easy."
+        <span class="cite">— Madison, Stylist.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPERATIONAL ADVANTAGE ============ -->
+<section class="section" id="operations">
+  <div class="section-label">06 / How We Operate</div>
+  <h2 class="section-title">The operational advantage.</h2>
+  <div class="ops">
+    <div class="op">
+      <div class="op-num">01</div>
+      <h4>US-Based Account Executives</h4>
+      <p>Seamless communication and strict project management for every engagement.</p>
+    </div>
+    <div class="op">
+      <div class="op-num">02</div>
+      <h4>The Tirunelveli Advantage</h4>
+      <p>Our highly skilled architects chose to return to our hometown. We pass the geographic cost-advantage directly to your bottom line, without sacrificing enterprise-grade engineering.</p>
+    </div>
+    <div class="op">
+      <div class="op-num">03</div>
+      <h4>Rigorous Support</h4>
+      <p>We do not just deploy; we maintain, service, and guarantee operational uptime for your business-critical applications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <h2>Let's build something <span class="accent">rigorous.</span></h2>
+  <a href="mailto:sales@bezohminds.com" class="cta-btn">sales@bezohminds.com →</a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-inner">
+    <div><strong>BEZOHMINDS PRIVATE LIMITED</strong> · Tirunelveli, Tamil Nadu, India</div>
+    <div class="foot-meta">
+      <span>sales@bezohminds.com</span>
+      <span>careers@bezohminds.com</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ====== Bento Grid interactivity ====== */
+  const perspectives = ['Client Perspective', 'Engineering Perspective'];
+  let viewIdx = 0;
+  const perspectiveEl = document.getElementById('perspective');
+  const bento = document.getElementById('bento');
+  const filterEl = document.getElementById('filter');
+
+  function renderView(){
+    perspectiveEl.textContent = perspectives[viewIdx];
+    const mode = viewIdx === 0 ? 'client' : 'eng';
+
+    // Skip the CTA cell — its copy stays consistent across perspectives
+    bento.querySelectorAll('.cell:not(.cta-cell) .cell-body').forEach(el => {
+      el.textContent = el.dataset[mode] || '';
+      el.classList.toggle('mono', mode === 'eng');
+    });
+    bento.querySelectorAll('.cell:not(.cta-cell) .cell-foot').forEach(el => {
+      el.textContent = mode === 'eng' ? '[ SOURCE_STACK ]' : '[ SERVICE_DOMAIN ]';
+    });
+  }
+
+  document.getElementById('prev-view').addEventListener('click', () => {
+    viewIdx = (viewIdx - 1 + perspectives.length) % perspectives.length;
+    renderView();
+  });
+  document.getElementById('next-view').addEventListener('click', () => {
+    viewIdx = (viewIdx + 1) % perspectives.length;
+    renderView();
+  });
+
+  filterEl.addEventListener('change', e => {
+    const key = e.target.value;
+    bento.querySelectorAll('.cell').forEach(cell => {
+      cell.classList.remove('dim', 'active');
+      if (cell.dataset.key === 'cta') return;          // never dim the CTA cell
+      if (key === 'all') return;
+      if (cell.dataset.key === key) cell.classList.add('active');
+      else cell.classList.add('dim');
+    });
+  });
+</script>
+</body>
+</html>
