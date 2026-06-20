@@ -13,7 +13,7 @@
   "@type": "Organization",
   "name": "Bezohminds Private Limited",
   "url": "https://bezohminds.com",
-  "logo": "https://bezohminds.com/logo.svg",
+  "logo": "https://bezohminds.com/bezohminds-logo.png",
   "description": "Enterprise-grade software architecture, AI engineering, and high-value execution. We engineer custom software, RAG systems, e-commerce, Salesforce, and mobile applications.",
   "knowsAbout": [
     "Custom Software Engineering",
@@ -41,7 +41,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-  /* ============ TOKENS ============ */
+  /* ============ TOKENS (now derived from the Bezohminds logo) ============ */
   :root{
     --canvas:#FAFAF7;
     --surface:#FFFFFF;
@@ -50,8 +50,14 @@
     --muted:#8A8A85;
     --hairline:#1A1A1A;
     --hairline-soft:#E5E5E0;
-    --accent:#00A8A8;        /* Bezohminds Teal — from logo */
-    --navy:#0A2540;
+
+    /* Brand colors — pulled directly from the logo */
+    --navy:#1E2A78;        /* Bezohminds Navy (the wordmark blue + wing) */
+    --navy-deep:#15205E;   /* slightly darker navy for footer */
+    --accent:#C8154C;      /* Bezohminds Crimson (the wing accent + 'minds') */
+    --accent-soft:#E63D70; /* lighter crimson for subtle hover states */
+    --accent-on-dark:#FF6B95;   /* brand crimson, lifted for navy backgrounds */
+
     --font-display:'Space Grotesk', system-ui, sans-serif;
     --font-body:'Inter', system-ui, sans-serif;
     --font-mono:'JetBrains Mono', ui-monospace, monospace;
@@ -76,31 +82,27 @@
   /* ============ NAV ============ */
   .nav{
     position:sticky;top:0;z-index:50;
-    background:rgba(250,250,247,.85);
+    background:rgba(250,250,247,.88);
     backdrop-filter:blur(12px);
     border-bottom:1px solid var(--hairline-soft);
   }
   .nav-inner{
     max-width:var(--max);margin:0 auto;
-    padding:18px var(--pad);
+    padding:14px var(--pad);
     display:flex;align-items:center;justify-content:space-between;
+    gap:24px;
   }
   .brand{
-    display:flex;align-items:center;gap:10px;
-    font-family:var(--font-mono);font-size:13px;
-    letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+    display:flex;align-items:center;
   }
-  .brand-mark{
-    width:22px;height:22px;
-    background:var(--ink);
-    position:relative;
+  .brand img{
+    height:36px;
+    width:auto;
+    display:block;
   }
-  .brand-mark::after{
-    content:"";position:absolute;inset:4px;
-    background:var(--accent);
-  }
-  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500}
-  .nav-links a{position:relative;padding:6px 0}
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500;color:var(--navy)}
+  .nav-links a{position:relative;padding:6px 0;transition:color .2s}
+  .nav-links a:hover{color:var(--accent)}
   .nav-links a::after{
     content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
     background:var(--accent);transition:width .25s ease;
@@ -108,12 +110,15 @@
   .nav-links a:hover::after{width:100%}
   .nav-cta{
     font-family:var(--font-mono);font-size:12px;
-    padding:9px 16px;border:1px solid var(--ink);
+    padding:9px 16px;border:1px solid var(--navy);color:var(--navy);
     text-transform:uppercase;letter-spacing:.1em;
-    transition:background .2s,color .2s;
+    transition:background .2s,color .2s,border-color .2s;
   }
-  .nav-cta:hover{background:var(--ink);color:var(--canvas)}
-  @media (max-width:768px){.nav-links{display:none}}
+  .nav-cta:hover{background:var(--accent);color:var(--canvas);border-color:var(--accent)}
+  @media (max-width:768px){
+    .nav-links{display:none}
+    .brand img{height:30px}
+  }
 
   /* ============ HERO ============ */
   .hero{
@@ -135,11 +140,12 @@
     font-size:clamp(40px, 8.5vw, 112px);
     line-height:.95;letter-spacing:-.03em;font-weight:600;
     margin:0 0 48px;
+    color:var(--navy);
   }
   .hero h1 span{display:block}
   .hero h1 .accent{color:var(--accent)}
   .hero-meta{
-    border-left:1px solid var(--ink);
+    border-left:2px solid var(--navy);
     padding:6px 0 6px 22px;
     font-family:var(--font-mono);font-size:14px;
     color:var(--graphite);line-height:2;
@@ -155,7 +161,7 @@
   }
   .section-label{
     font-family:var(--font-mono);font-size:12px;
-    color:var(--muted);text-transform:uppercase;letter-spacing:.15em;
+    color:var(--accent);text-transform:uppercase;letter-spacing:.15em;
     margin-bottom:24px;
   }
   .section-title{
@@ -163,12 +169,13 @@
     font-size:clamp(28px, 4vw, 48px);
     letter-spacing:-.02em;line-height:1.05;
     margin:0 0 56px;max-width:780px;
+    color:var(--navy);
   }
 
   /* ============ ETHOS (Terminal block) ============ */
   .ethos{
     background:var(--surface);
-    border:1px solid var(--hairline);
+    border:1px solid var(--navy);
     padding:clamp(28px,4vw,56px);
     font-family:var(--font-mono);font-size:14px;line-height:1.85;
     max-width:880px;
@@ -179,7 +186,7 @@
   }
   .ethos p{margin:0 0 16px;color:var(--graphite)}
   .ethos p:last-child{margin:0}
-  .ethos strong{color:var(--ink)}
+  .ethos strong{color:var(--navy)}
 
   /* ============ BENTO GRID ============ */
   .bento-wrap{margin-top:8px}
@@ -189,7 +196,7 @@
   }
   .view-mode{
     display:flex;align-items:center;gap:0;
-    border:1px solid var(--hairline);background:var(--surface);
+    border:1px solid var(--navy);background:var(--surface);
     font-family:var(--font-mono);font-size:13px;
   }
   .view-mode .label{
@@ -200,11 +207,11 @@
   .view-mode button{
     background:none;border:none;cursor:pointer;
     padding:12px 18px;font-family:var(--font-mono);font-size:13px;
-    color:var(--ink);transition:background .2s;
+    color:var(--navy);transition:background .2s,color .2s;
   }
-  .view-mode button:hover{background:var(--canvas)}
+  .view-mode button:hover{background:var(--navy);color:var(--canvas)}
   .view-mode .perspective{
-    min-width:200px;text-align:center;font-weight:500;
+    min-width:200px;text-align:center;font-weight:500;color:var(--navy);
     border-left:1px solid var(--hairline-soft);
     border-right:1px solid var(--hairline-soft);
     padding:12px 22px;
@@ -215,10 +222,10 @@
     color:var(--muted);text-transform:uppercase;letter-spacing:.1em;
   }
   .filter-wrap select{
-    background:var(--surface);border:1px solid var(--hairline);
+    background:var(--surface);border:1px solid var(--navy);
     padding:10px 32px 10px 14px;font-family:var(--font-mono);font-size:13px;
-    color:var(--ink);cursor:pointer;appearance:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%230A0A0A' stroke-width='1.5' fill='none'/></svg>");
+    color:var(--navy);cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%231E2A78' stroke-width='1.5' fill='none'/></svg>");
     background-repeat:no-repeat;background-position:right 12px center;
     min-width:220px;
   }
@@ -228,8 +235,8 @@
     grid-template-columns:repeat(3,1fr);
     grid-auto-rows:minmax(180px,auto);
     gap:0;
-    border:1px solid var(--hairline);
-    background:var(--hairline);
+    border:1px solid var(--navy);
+    background:var(--navy);
   }
   .cell{
     background:var(--surface);
@@ -240,14 +247,15 @@
     min-height:180px;
   }
   .cell.dim{opacity:.28}
-  .cell.active{background:var(--ink);color:var(--canvas)}
+  .cell.active{background:var(--navy);color:var(--canvas)}
+  /* FIX #4: active state used --accent (crimson) on navy → unreadable. Lifted to --accent-on-dark. */
   .cell.active .cell-tag,
-  .cell.active .cell-foot{color:var(--accent)}
+  .cell.active .cell-foot{color:var(--accent-on-dark)}
   .cell.active .cell-body{color:var(--canvas)}
 
   .cell-tag{
     font-family:var(--font-mono);font-size:11px;
-    color:var(--graphite);text-transform:uppercase;letter-spacing:.15em;
+    color:var(--navy);text-transform:uppercase;letter-spacing:.15em;
     font-weight:500;
   }
   .cell-body{
@@ -257,30 +265,35 @@
   }
   .cell-body.mono{
     font-family:var(--font-mono);font-size:15px;font-weight:400;
-    letter-spacing:0;line-height:1.5;
+    letter-spacing:0;line-height:1.5;color:var(--navy);
   }
   .cell-foot{
     font-family:var(--font-mono);font-size:10px;
     color:var(--muted);letter-spacing:.1em;
     margin-top:14px;
   }
-  /* The hero cell (Visit Maker spans 2 rows) */
   .cell.span-row{grid-row:span 2}
   .cell.span-col{grid-column:span 2}
-  /* Empty cell */
   .cell.empty{background:transparent;pointer-events:none}
 
   /* ============ CTA CELL (fills bottom-right) ============ */
   .cell.cta-cell{
-    background:var(--ink);
+    background:var(--navy);
     color:var(--canvas);
     text-decoration:none;
     cursor:pointer;
     transition:background .25s ease;
   }
   .cell.cta-cell:hover{ background:var(--accent); }
-  .cell.cta-cell .cell-tag{ color:var(--accent); transition:color .25s ease; }
-  .cell.cta-cell:hover .cell-tag{ color:var(--ink); }
+  .cell.cta-cell .cell-tag{
+    color:var(--canvas);
+    opacity:.85;
+    transition:color .25s ease, opacity .25s ease;
+  }
+  .cell.cta-cell:hover .cell-tag{
+    color:var(--canvas);
+    opacity:1;
+  }
   .cell.cta-cell .cell-body{
     color:var(--canvas);
     font-family:var(--font-display);
@@ -292,15 +305,87 @@
     font-size:32px;
     line-height:1;
     margin-top:18px;
-    color:var(--accent);
+    color:var(--accent-on-dark);
     transition:color .25s ease, transform .25s ease;
     display:inline-block;
   }
   .cell.cta-cell:hover .cell-arrow{
-    color:var(--ink);
+    color:var(--canvas);
     transform:translateX(6px);
   }
-  .cell.cta-cell .cell-foot{ color:#8A8A85; }
+  .cell.cta-cell .cell-foot{ color:rgba(250,250,247,.55); }
+
+  /* ============ VISIT MAKER cell — mini scheduling visual ============ */
+  .cell.span-row .vm-tagline{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--accent);
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    margin-top:8px;
+  }
+  .cell.span-row .vm-visual{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--graphite);
+  }
+  .cell.span-row .vm-slot{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 10px;
+    border:1px solid var(--hairline-soft);
+    background:var(--canvas);
+    letter-spacing:.05em;
+    transition:border-color .25s ease;
+  }
+  .cell.span-row .vm-slot .time{ color:var(--navy); font-weight:500; }
+  .cell.span-row .vm-slot .status{
+    font-size:10px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+  }
+  .cell.span-row .vm-slot.booked{
+    border-color:var(--navy);
+    background:var(--navy);
+    color:var(--canvas);
+  }
+  .cell.span-row .vm-slot.booked .time{ color:var(--canvas); }
+  /* FIX #5: "Booked" status was crimson on navy → unreadable. Lifted to --accent-on-dark. */
+  .cell.span-row .vm-slot.booked .status{ color:var(--accent-on-dark); }
+  /* Open slot still uses --accent because it sits on the light canvas background. */
+  .cell.span-row .vm-slot.open .status{ color:var(--accent); }
+  .cell.span-row .vm-pulse{
+    display:inline-block;
+    width:6px;height:6px;
+    background:var(--accent);
+    border-radius:50%;
+    margin-right:6px;
+    vertical-align:middle;
+    animation:vm-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes vm-pulse{
+    0%,100%{opacity:.3;transform:scale(.85)}
+    50%{opacity:1;transform:scale(1.1)}
+  }
+  .cell.span-row .vm-meta{
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid var(--hairline-soft);
+    display:flex;
+    justify-content:space-between;
+  }
+  .cell.span-row .vm-meta strong{ color:var(--accent); font-weight:500; }
 
   @media (max-width:900px){
     .bento{grid-template-columns:repeat(2,1fr)}
@@ -309,17 +394,19 @@
   @media (max-width:540px){
     .bento{grid-template-columns:1fr}
     .cell.span-row{grid-row:auto}
+    .cell.span-row .vm-visual,
+    .cell.span-row .vm-meta{ display:none; }
   }
 
   /* ============ PRODUCT BLOCK (Visit Maker) ============ */
   .product{
     display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--hairline);
+    border:1px solid var(--navy);
   }
   .product>div{padding:clamp(28px,4vw,56px)}
-  .product-left{background:var(--ink);color:var(--canvas)}
+  .product-left{background:var(--navy);color:var(--canvas)}
   .product-left .tag{
-    font-family:var(--font-mono);font-size:11px;color:var(--accent);
+    font-family:var(--font-mono);font-size:11px;color:var(--accent-on-dark);
     letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;
   }
   .product-left h3{
@@ -327,19 +414,19 @@
     line-height:1;margin:0 0 14px;letter-spacing:-.02em;font-weight:600;
   }
   .product-left .sub{
-    font-family:var(--font-mono);font-size:13px;color:#A8A8A0;
+    font-family:var(--font-mono);font-size:13px;color:#B8C0E0;
   }
   .product-right{background:var(--surface)}
   .product-right h4{
     font-family:var(--font-mono);font-size:11px;letter-spacing:.15em;
-    text-transform:uppercase;color:var(--muted);margin:0 0 10px;
+    text-transform:uppercase;color:var(--accent);margin:0 0 10px;
   }
   .product-right p{margin:0 0 28px;font-size:15px;color:var(--graphite)}
   .product-right p:last-of-type{margin-bottom:0}
   .product-right .quote{
     border-left:2px solid var(--accent);padding-left:18px;
     font-family:var(--font-display);font-size:20px;line-height:1.3;
-    color:var(--ink);font-style:italic;font-weight:500;
+    color:var(--navy);font-style:italic;font-weight:500;
   }
   .product-right .cite{
     font-family:var(--font-mono);font-size:12px;color:var(--muted);
@@ -348,7 +435,7 @@
   @media (max-width:768px){.product{grid-template-columns:1fr}}
 
   /* ============ OPERATIONS (numbered list) ============ */
-  .ops{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--hairline)}
+  .ops{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--navy)}
   .op{
     padding:clamp(28px,3.5vw,40px);
     border-right:1px solid var(--hairline-soft);
@@ -362,6 +449,7 @@
   .op h4{
     font-family:var(--font-display);font-size:22px;
     font-weight:600;letter-spacing:-.01em;margin:0 0 12px;
+    color:var(--navy);
   }
   .op p{margin:0;font-size:14px;color:var(--graphite);line-height:1.6}
   @media (max-width:768px){
@@ -382,20 +470,21 @@
     font-size:clamp(36px,7vw,88px);
     letter-spacing:-.03em;line-height:.95;font-weight:600;
     margin:0 0 36px;
+    color:var(--navy);
   }
   .cta h2 .accent{color:var(--accent)}
   .cta-btn{
     display:inline-block;padding:18px 42px;
-    background:var(--ink);color:var(--canvas);
+    background:var(--navy);color:var(--canvas);
     font-family:var(--font-mono);font-size:13px;
     text-transform:uppercase;letter-spacing:.15em;
-    border:1px solid var(--ink);
-    transition:background .2s,color .2s;
+    border:1px solid var(--navy);
+    transition:background .2s,border-color .2s;
   }
   .cta-btn:hover{background:var(--accent);border-color:var(--accent)}
 
   footer{
-    background:var(--navy);color:#A8B5C8;
+    background:var(--navy-deep);color:#B8C0E0;
     padding:clamp(40px,5vw,64px) var(--pad);
     font-family:var(--font-mono);font-size:13px;
   }
@@ -405,6 +494,9 @@
   }
   .foot-inner strong{color:#fff}
   .foot-meta{display:flex;gap:28px;flex-wrap:wrap}
+  .foot-meta span{transition:color .2s}
+  /* FIX #6: footer hover was crimson on navy-deep → unreadable. Lifted to --accent-on-dark. */
+  .foot-meta span:hover{color:var(--accent-on-dark)}
 </style>
 </head>
 <body>
@@ -412,9 +504,8 @@
 <!-- ============ NAVIGATION ============ -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="brand">
-      <span class="brand-mark"></span>
-      <span>BEZOHMINDS</span>
+    <a href="#" class="brand" aria-label="Bezohminds home">
+      <img src="bezohminds-logo.png" alt="Bezohminds" />
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -486,9 +577,39 @@
     <div class="bento" id="bento">
       <!-- Visit Maker — spans 2 rows, top-left -->
       <div class="cell span-row" data-key="visit-maker" itemscope itemtype="https://schema.org/Product">
-        <div class="cell-tag" itemprop="name">VISIT MAKER</div>
-        <div class="cell-body" data-client="Scheduling Ecosystem" data-eng="React / Node.js / MongoDB">Scheduling Ecosystem</div>
-        <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+        <div>
+          <div class="cell-tag" itemprop="name">VISIT MAKER</div>
+          <div class="vm-tagline">// Proprietary Product</div>
+
+          <div class="vm-visual" aria-hidden="true">
+            <div class="vm-slot booked">
+              <span class="time">09:00 — 09:45</span>
+              <span class="status">Booked</span>
+            </div>
+            <div class="vm-slot open">
+              <span class="time">10:00 — 10:45</span>
+              <span class="status"><span class="vm-pulse"></span>Open</span>
+            </div>
+            <div class="vm-slot booked">
+              <span class="time">11:00 — 11:45</span>
+              <span class="status">Booked</span>
+            </div>
+            <div class="vm-slot open">
+              <span class="time">12:00 — 12:45</span>
+              <span class="status"><span class="vm-pulse"></span>Open</span>
+            </div>
+          </div>
+
+          <div class="vm-meta">
+            <span>SMS · Email Gateway</span>
+            <span><strong>● Live</strong></span>
+          </div>
+        </div>
+
+        <div>
+          <div class="cell-body" data-client="Scheduling Ecosystem" data-eng="React / Node.js / MongoDB">Scheduling Ecosystem</div>
+          <div class="cell-foot">[ SERVICE_DOMAIN ]</div>
+        </div>
       </div>
 
       <!-- Enterprise -->
@@ -595,10 +716,10 @@
     </div>
   </div>
 
-  <div class="ethos" style="max-width:none;margin-top:48px;background:var(--ink);color:var(--canvas);border-color:var(--ink);">
-    <div class="ethos-head" style="color:var(--accent);">// THE VISION</div>
-    <p style="color:#D8D8D2;">By 2027, every Bezohminds engagement will ship with an AI-native architecture by default — not as an add-on, but as the substrate. Custom software that learns from its own operational data. E-commerce that anticipates demand. Salesforce orgs that automate their own triage.</p>
-    <p style="color:#D8D8D2;"><strong style="color:#fff;">The mandate is unchanged.</strong> Bezalel built the tabernacle with the rigor of an engineer and the soul of an artist. We build AI systems the same way — engineered to be trusted, designed to be used.</p>
+  <div class="ethos" style="max-width:none;margin-top:48px;background:var(--navy);color:var(--canvas);border-color:var(--navy);">
+    <div class="ethos-head" style="color:var(--accent-on-dark);">// THE VISION</div>
+    <p style="color:#D8DCEC;">By 2027, every Bezohminds engagement will ship with an AI-native architecture by default — not as an add-on, but as the substrate. Custom software that learns from its own operational data. E-commerce that anticipates demand. Salesforce orgs that automate their own triage.</p>
+    <p style="color:#D8DCEC;"><strong style="color:#fff;">The mandate is unchanged.</strong> Bezalel built the tabernacle with the rigor of an engineer and the soul of an artist. We build AI systems the same way — engineered to be trusted, designed to be used.</p>
   </div>
 </section>
 
@@ -680,7 +801,6 @@
     perspectiveEl.textContent = perspectives[viewIdx];
     const mode = viewIdx === 0 ? 'client' : 'eng';
 
-    // Skip the CTA cell — its copy stays consistent across perspectives
     bento.querySelectorAll('.cell:not(.cta-cell) .cell-body').forEach(el => {
       el.textContent = el.dataset[mode] || '';
       el.classList.toggle('mono', mode === 'eng');
@@ -703,7 +823,7 @@
     const key = e.target.value;
     bento.querySelectorAll('.cell').forEach(cell => {
       cell.classList.remove('dim', 'active');
-      if (cell.dataset.key === 'cta') return;          // never dim the CTA cell
+      if (cell.dataset.key === 'cta') return;
       if (key === 'all') return;
       if (cell.dataset.key === key) cell.classList.add('active');
       else cell.classList.add('dim');
