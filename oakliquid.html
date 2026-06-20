@@ -1,0 +1,49 @@
+<!-- ============== LIQUID GLASS NAV ============== -->
+<div class="nav-wrap">
+  <header class="nav-glass" id="navGlass">
+    <!-- SVG refraction filter (real liquid glass distortion) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <filter id="liquid-distort" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012"
+                        numOctaves="2" seed="3" result="noise"/>
+          <feGaussianBlur in="noise" stdDeviation="2" result="blurNoise"/>
+          <feDisplacementMap in="SourceGraphic" in2="blurNoise"
+                             scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Glass refraction layer (sits behind everything in the pill) -->
+    <span class="glass-refract" aria-hidden="true"></span>
+    <!-- Specular highlight sweep -->
+    <span class="glass-specular" aria-hidden="true"></span>
+    <!-- Top edge light -->
+    <span class="glass-edge-top" aria-hidden="true"></span>
+
+    <!-- Brand -->
+    <a href="#" class="nav-brand">
+      <img src="bezohminds-logo.png" alt="Bezohminds" />
+    </a>
+
+    <!-- Links with sliding liquid pill -->
+    <nav class="nav-menu" aria-label="Primary">
+      <span class="liquid-pill" id="liquidPill" aria-hidden="true"></span>
+      <a href="#company" class="nav-link" data-pill>Company</a>
+      <a href="#work"    class="nav-link" data-pill>Work</a>
+      <a href="#services" class="nav-link" data-pill>Services</a>
+      <a href="#insights" class="nav-link" data-pill>Insights</a>
+      <a href="#contact" class="nav-link" data-pill>Contact</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="#contact" class="nav-cta-btn">
+      <span>Schedule a call</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <button class="nav-hamb" aria-label="Menu" id="navHamb">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+</div>
